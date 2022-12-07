@@ -2,15 +2,11 @@
 
 #Funcion para obtener duracion maxima por año y plataforma
 def get_max_duration(año:int, plataforma:str, duration_type:str):
-
-#Mensajes de error en caso de introducir un valor no valido
    if duration_type not in ["min","season"]:
         raise ValueError("duration_type should be 'min' or 'season'")
    elif plataforma not in ["netflix","amazon","disney","hulu"]:
         raise ValueError("plataforma should be a platform name")
    else:
-#Se filtra usando los nombres de las columnas release_year y type con su correspondiente sufijo
-#dependediendo la plataforma
     if plataforma=="amazon":
         if duration_type=="min":
             max_duration_id=df[(df["release_year_amazon"]==2021) & (df["type_amazon"]=="Movie")].duration_amazon.idxmax()
