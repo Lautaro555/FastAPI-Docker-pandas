@@ -47,6 +47,13 @@ list_replace=[" min"," Season"," Seasons","s"]
 list_value=["","","",""]
 df[["duration_amazon","duration_netflix","duration_disney","duration_hulu"]]=df[["duration_amazon","duration_netflix","duration_disney","duration_hulu"]].replace(list_replace,list_value,regex=True)
 
+#Se acomoda el formato de los datos en las columnas cast y las columnas listed_in
+df[["cast_amazon","cast_disney","cast_netflix","cast_hulu"]]=df[["cast_amazon","cast_disney","cast_netflix","cast_hulu"]].replace(", ",",",regex=True)
+df[["cast_amazon","cast_disney","cast_netflix","cast_hulu"]].head(50)
+
+df[["listed_in_amazon","listed_in_disney","listed_in_netflix","listed_in_hulu"]]=df[["listed_in_amazon","listed_in_disney","listed_in_netflix","listed_in_hulu"]].replace(", ",",",regex=True)
+df[["listed_in_amazon","listed_in_disney","listed_in_netflix","listed_in_hulu"]].head(50)
+
 #luego convierto el tipo de dato de duration y release_year a entero.
 df[["duration_amazon","duration_netflix","duration_disney","duration_hulu"]]=df[["duration_amazon","duration_netflix","duration_disney","duration_hulu"]].astype(int)
 df[["release_year_amazon","release_year_netflix","release_year_disney","release_year_hulu"]]=df[["release_year_amazon","release_year_netflix","release_year_disney","release_year_hulu"]].astype(int)
