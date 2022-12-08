@@ -9,7 +9,7 @@ def get_max_duration(año:int, plataforma:str, duration_type:str):
    else:
     if plataforma=="amazon":
         if duration_type=="min":
-            max_duration_id=df[(df["release_year_amazon"]==2021) & (df["type_amazon"]=="Movie")].duration_amazon.idxmax()
+            max_duration_id=df[(df["release_year_amazon"]==año) & (df["type_amazon"]=="Movie")].duration_amazon.idxmax()
             return df.loc[max_duration_id, 'title']
         if duration_type=="season":
             max_duration_id=df[(df["release_year_amazon"]==año) & (df["type_amazon"]=="TV Show")].duration_amazon.idxmax()
@@ -59,39 +59,8 @@ def get_count_plataform(plataforma):
         dict={"Number of series":series,"Number of movies":movies}
     return dict
 
-#se crea la lista de generos para usar en la siguienta funcion
-lista_generos=[]
-for i in df["listed_in_disney"]:
-     if i != 0:
-      s=i.split(",")
-      for a in range(len(s)):
-          if s[a] not in lista_generos:
-           lista_generos.append(s[a])
-for i in df["listed_in_netflix"]:
-     if i != 0:
-      s=i.split(",")
-      for a in range(len(s)):
-          if s[a] not in lista_generos:
-           lista_generos.append(s[a])
-for i in df["listed_in_hulu"]:
-     if i != 0:
-      s=i.split(",")
-      for a in range(len(s)):
-          if s[a] not in lista_generos:
-           lista_generos.append(s[a])
-for i in df["listed_in_amazon"]:
-     if i != 0:
-      s=i.split(",")
-      for a in range(len(s)):
-          if s[a] not in lista_generos:
-           lista_generos.append(s[a])
-
-
 #Funcion para obtener la plataforma en la que mas se repite el genero especificado
 def get_listedin(genero:str):
- if genero not in lista_generos:
-    raise ValueError("genero introduced is not in list: ",lista_generos)
- else:
     amazon_count=0
     hulu_count=0
     disney_count=0
