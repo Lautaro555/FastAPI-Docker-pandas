@@ -1,9 +1,10 @@
 import pandas as pd
-#Lista de funciones
-type={"cast_hulu": "object","cast_amazon": "object", "hulu": "int64", "amazon": "int64", "netflix": "int64", "disney": "int64",
-      "listed_in_amazon":str,"listed_in_netflix":str,"listed_in_disney":str,"listed_in_hulu":str}
+
+#Se crea el dataframe df con el archivo df.csv previamente generado, se acomodan los tipo de datos de las columnas y se elimina una columna vacia que se genera al cargar el csv
+type={"cast_hulu": "object","cast_amazon": "object", "listed_in_amazon":str,"listed_in_netflix":str,"listed_in_disney":str,"listed_in_hulu":str}
 df=pd.read_csv("https://github.com/Lautaro555/FastAPI-Docker-pandas/raw/main/Data_cleansing/Clean_dataset/df.csv",sep=",",dtype=type).drop('Unnamed: 0', axis=1)
 
+#Lista de funciones
 #Funcion para obtener duracion maxima en minutos o temporadas, de la plataforma y año especificado
 def get_max_duration2(año:int, plataforma:str, duration_type:str):
    if duration_type not in ["min","season"]:
