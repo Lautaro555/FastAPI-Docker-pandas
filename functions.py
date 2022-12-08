@@ -1,7 +1,10 @@
+import pandas as pd
 #Lista de funciones
+type={"cast_hulu": "object","cast_amazon": "object", "hulu": "int64", "amazon": "int64", "netflix": "int64", "disney": "int64",
+      "listed_in_amazon":str,"listed_in_netflix":str,"listed_in_disney":str,"listed_in_hulu":str}
+df=pd.read_csv("https://github.com/Lautaro555/FastAPI-Docker-pandas/raw/main/Data_cleansing/Clean_dataset/df.csv",sep=",",dtype=type).drop('Unnamed: 0', axis=1)
 
-#Funcion para obtener duracion maxima por año y plataforma
-def get_max_duration(año:int, plataforma:str, duration_type:str):
+def get_max_duration2(año:int, plataforma:str, duration_type:str):
    if duration_type not in ["min","season"]:
         raise ValueError("duration_type should be 'min' or 'season'")
    elif plataforma not in ["netflix","amazon","disney","hulu"]:
@@ -36,31 +39,26 @@ def get_max_duration(año:int, plataforma:str, duration_type:str):
             max_duration_id=df[(df["release_year_disney"]==año) & (df["type_disney"]=="TV Show")].duration_disney.idxmax()
             return df.loc[max_duration_id, 'title']
 
-#Funcion para obtener la cantidad de series y peliculas de la plataforma especificada
-def get_count_plataform(plataforma):
- if plataforma not in ["netflix","amazon","disney","hulu"]:
-        raise ValueError("plataforma should be a platform name")
- else:
+def get_count_plataform2(plataforma):
     if plataforma=="amazon":
         movies=df[(df["type_amazon"]=="Movie")]["title"].count()
         series=df[(df["type_amazon"]=="TV Show")]["title"].count()
-        dict={"Number of series":series,"Number of movies":movies}
+        dict={"Number of series":int(series),"Number of movies":int(movies)}
     if plataforma=="hulu":
         movies=df[(df["type_hulu"]=="Movie")]["title"].count()
         series=df[(df["type_hulu"]=="TV Show")]["title"].count()
-        dict={"Number of series":series,"Number of movies":movies}
+        dict={"Number of series":int(series),"Number of movies":int(movies)}
     if plataforma=="netflix":
         movies=df[(df["type_netflix"]=="Movie")]["title"].count()
         series=df[(df["type_netflix"]=="TV Show")]["title"].count()
-        dict={"Number of series":series,"Number of movies":movies}
+        dict={"Number of series":int(series),"Number of movies":int(movies)}
     if plataforma=="disney":
         movies=df[(df["type_disney"]=="Movie")]["title"].count()
         series=df[(df["type_disney"]=="TV Show")]["title"].count()
-        dict={"Number of series":series,"Number of movies":movies}
+        dict={"Number of series":int(series),"Number of movies":int(movies)}
     return dict
 
-#Funcion para obtener la plataforma en la que mas se repite el genero especificado
-def get_listedin(genero:str):
+def get_listedin2(genero:str):
     amazon_count=0
     hulu_count=0
     disney_count=0
@@ -82,8 +80,7 @@ def get_listedin(genero:str):
     max_platform=key = [key for key, val in dict_count.items() if val == max_value][0]
     return max_platform , max_value
 
-#Funcion para obtener el actor que mas se repite en la plataforma y año indicado
-def get_actor(plataforma:str, año:int):
+def get_actor2(plataforma:str, año:int):
     c=0
     dict={}
     lista_actores=[]
