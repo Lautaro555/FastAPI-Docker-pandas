@@ -4,6 +4,7 @@ type={"cast_hulu": "object","cast_amazon": "object", "hulu": "int64", "amazon": 
       "listed_in_amazon":str,"listed_in_netflix":str,"listed_in_disney":str,"listed_in_hulu":str}
 df=pd.read_csv("https://github.com/Lautaro555/FastAPI-Docker-pandas/raw/main/Data_cleansing/Clean_dataset/df.csv",sep=",",dtype=type).drop('Unnamed: 0', axis=1)
 
+#Funcion para obtener duracion maxima en minutos o temporadas, de la plataforma y año especificado
 def get_max_duration2(año:int, plataforma:str, duration_type:str):
    if duration_type not in ["min","season"]:
         raise ValueError("duration_type should be 'min' or 'season'")
@@ -39,6 +40,7 @@ def get_max_duration2(año:int, plataforma:str, duration_type:str):
             max_duration_id=df[(df["release_year_disney"]==año) & (df["type_disney"]=="TV Show")].duration_disney.idxmax()
             return df.loc[max_duration_id, 'title']
 
+#Funcion para obtener la cantidad de peliculas y series de la plataforma especificada
 def get_count_plataform2(plataforma):
     if plataforma=="amazon":
         movies=df[(df["type_amazon"]=="Movie")]["title"].count()
@@ -58,6 +60,7 @@ def get_count_plataform2(plataforma):
         dict={"Number of series":int(series),"Number of movies":int(movies)}
     return dict
 
+#Funcion para obtener la plataforma en la que mas se repite el genero especificado
 def get_listedin2(genero:str):
     amazon_count=0
     hulu_count=0
@@ -80,6 +83,7 @@ def get_listedin2(genero:str):
     max_platform=key = [key for key, val in dict_count.items() if val == max_value][0]
     return max_platform , max_value
 
+#Funcion para obtener las veces que se repite un actor o actriz y su nombre, en la plataforma y año especificado
 def get_actor2(plataforma:str, año:int):
     c=0
     dict={}

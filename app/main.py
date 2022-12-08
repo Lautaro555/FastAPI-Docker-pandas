@@ -1,10 +1,11 @@
 from fastapi import FastAPI
+#Se importan las funciones de functions.py
 from functions import *
 
 app=FastAPI()
 
 
-#Funcion para obtener duracion maxima por año y plataforma
+#Aqui se crean funciones que retornan las funciones de function.py con los parametros introducidos
 @app.get("/get-max-duration/{year-platform-duration}")
 async def get_max_duration(año:int, plataforma:str, duration_type:str):
     return get_max_duration2(año,plataforma,duration_type)
