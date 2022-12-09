@@ -2,6 +2,7 @@
 
 El proyecto consiste en realizar una ingesta de datos desde diversas fuentes, posteriormente aplicar las transformaciones  pertinentes, y luego disponibilizar los datos limpios para su consulta a través de una API. Para esta API se utilizo FastAPI y luego se creo un entorno virtual con docker para su uso. Una vez corroborado que funciona la imagen de docker se realizo un deployment en Mogenius.
 
+[API en Mogenius](https://fastapi-docker-prod-fastapi-docker-k9oppc.mo2.mogenius.io/docs)
 ---
 
 ### Paso 1:
