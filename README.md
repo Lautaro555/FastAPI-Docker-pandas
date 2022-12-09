@@ -25,12 +25,11 @@ Se crea un dockerfile con la configuracion para crear la imagen de docker, luego
 ```
 docker build -t fastapi .
 ```
-
-### Paso 6:
+### Paso 5:
 
 La imagen se ejecuta usando `docker run -d --name container -p 8000:8000 fastapi `y se abre en el navegador `localhost:8000/docs` desde donde se podran ejecutar las consultas requeridas. Este paso se realizo para verificar que el contenedor y la app funcionen.
 
-### Paso 5:
+### Paso 6:
 
 Se conecta el repositorio de github con mongenius, desde donde se ejecuta el dockerfile. Se verifica que todas la app funcionan entrando desde el link que provee mongenius, el cual en mi caso es `fastapi-docker-prod-fastapi-docker-k9oppc.mo2.mogenius.io:80`
 
