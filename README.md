@@ -21,7 +21,6 @@ El archivo main.py se configuro para poder crear la app con FastAPI, este archiv
 ### Paso 4:
 
 Se crea un dockerfile con la configuracion para crear la imagen de docker, luego se ejecuta el comando para crear la imagen de docker, en este caso llamada "fastapi"
-
 ```
 docker build -t fastapi .
 ```
