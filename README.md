@@ -31,8 +31,8 @@ La imagen se ejecuta usando `docker run -d --name container -p 8000:8000 fastapi
 
 ### Paso 6:
 
-Se conecta el repositorio de github con mongenius, desde donde se ejecuta el dockerfile. Se verifica que todas la app funcionan entrando desde el link que provee mongenius, el cual en mi caso es `fastapi-docker-prod-fastapi-docker-k9oppc.mo2.mogenius.io:80`
+Se conecta el repositorio de github con mogenius, desde donde se ejecuta el dockerfile. Se verifica que todas la app funcionan entrando desde el link que provee mongenius, el cual en mi caso es `fastapi-docker-prod-fastapi-docker-k9oppc.mo2.mogenius.io/docs`
 
 ## Conclusiones
 
-Para esta API elegi utilizar solo pandas y funciones basicas de python como el loop for, etc. para evitar añadirle mas complejidad a herramientas como FastAPI o Docker, las cuales utilizo por primera vez, y evitar futuros errores. De todas formas con este proyecto aprendi el uso basico de estas herramientas, como utilizarlas conjuntamente y su utilidad para futuras API.
+Para esta API elegi utilizar solo pandas y funciones basicas de python como el loop for, etc. para evitar añadirle mas complejidad a herramientas como FastAPI o Docker, las cuales utilizo por primera vez, y evitar futuros errores.El deploy en Mogenius fue lo que encontre con menor dificultad, mientras que el armado de la imagen de docker y la solucion de errores en las consultas fue lo que mas tiempo me llevo. De todas formas con este proyecto aprendi el uso basico de estas herramientas, como utilizarlas conjuntamente y su utilidad para futuras API. 
