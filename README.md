@@ -26,7 +26,7 @@ Se crea un dockerfile con la configuracion para crear la imagen de docker, luego
 docker build -t fastapi .
 ```
 
-### Paso 5:
+### Paso 6:
 
 La imagen se ejecuta usando `docker run -d --name container -p 8000:8000 fastapi `y se abre en el navegador `localhost:8000/docs` desde donde se podran ejecutar las consultas requeridas. Este paso se realizo para verificar que el contenedor y la app funcionen.
 
